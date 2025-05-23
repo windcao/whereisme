@@ -7,43 +7,8 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <style>
-    body {
-      font-family: sans-serif;
-      margin: 20px;
-      background-color: #f4f4f4;
-    }
-    #expense-description, #expense-amount {
-      padding: 8px;
-      margin-right: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    #add-expense {
-      padding: 8px 15px;
-      background-color: #5cb85c;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    #add-expense:hover {
-      background-color: #4cae4c;
-    }
-    #expense-list {
-      list-style-type: none;
-      padding: 0;
-      margin-top: 20px;
-    }
-    #expense-list li {
-      padding: 10px;
-      background-color: #fff;
-      border-bottom: 1px solid #eee;
-      margin-bottom: 5px;
-      border-radius: 4px;
-      box-shadow: 0 1px 1px rgba(0,0,0,0.05);
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <input type="text" id="expense-description" placeholder="Expense description">
@@ -54,6 +19,9 @@
     <p>Total Expenses: <span id="total-expenses"></span></p>
     <p>Total Amount: $<span id="total-amount"></span></p>
     <p>Average Amount: $<span id="average-amount"></span></p>
+    <div style="margin-top: 20px;">
+        <canvas id="expense-chart"></canvas>
+    </div>
   </div>
   <script src="app.js"></script>
 </body>
