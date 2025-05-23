@@ -27,6 +27,7 @@ function addExpense() {
 
     displayExpenses();
     saveExpenses();
+    calculateAndDisplayStatistics();
 }
 
 function displayExpenses() {
@@ -50,6 +51,20 @@ function loadExpenses() {
         expenses = JSON.parse(savedExpenses);
     }
     displayExpenses(); // Always call displayExpenses, even if no saved expenses
+    calculateAndDisplayStatistics();
+}
+
+function calculateAndDisplayStatistics() {
+    const numberOfExpenses = expenses.length;
+    let totalAmount = 0;
+    expenses.forEach(expense => {
+        totalAmount += expense.amount;
+    });
+    const averageAmount = numberOfExpenses === 0 ? 0 : totalAmount / numberOfExpenses;
+
+    document.getElementById('total-expenses').textContent = numberOfExpenses;
+    document.getElementById('total-amount').textContent = totalAmount.toFixed(2);
+    document.getElementById('average-amount').textContent = averageAmount.toFixed(2);
 }
 
 // Event listeners
