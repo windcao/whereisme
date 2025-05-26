@@ -1,67 +1,100 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  margin: 20px auto;
-  background-color: #f4f4f4;
-  max-width: 800px;
-  padding: 20px; /* Added padding for better spacing within the max-width */
+    font-family: 'Inter', 'system-ui', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f8f9fa; /* light gray */
+    color: #212529; /* dark gray */
+    line-height: 1.6;
+    padding: 20px; /* optional, if container doesn't handle all spacing */
 }
 
-#expense-description, #expense-amount {
-  padding: 10px; /* Increased padding */
-  margin-right: 10px;
-  margin-bottom: 10px; /* Added margin-bottom for spacing if they wrap */
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box; /* Added for consistent sizing */
-  width: calc(50% - 55px); /* Adjusted width for two inputs and a button, accounting for margins and button width */
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 40px auto; /* centers the container */
+    padding: 30px;
+    background-color: #ffffff; /* white */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Headings (h1 inside .container) */
+.container h1 {
+    text-align: center;
+    color: #343a40;
+    margin-bottom: 30px;
+    font-size: 2rem; /* or appropriate size */
+}
+
+/* Input Fields */
+#expense-description,
+#expense-amount {
+    display: block;
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+#expense-description:focus,
+#expense-amount:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Button */
 #add-expense {
-  padding: 10px 20px; /* Increased padding */
-  background-color: #5cb85c;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease; /* Smooth transition for hover/active */
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #fff;
+    background-color: #007bff; /* a modern blue */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+    margin-bottom: 30px;
 }
 
 #add-expense:hover {
-  background-color: #4cae4c; /* Darker shade on hover */
+    background-color: #0056b3; /* darker blue */
 }
 
-#add-expense:active {
-  background-color: #3e8e41; /* Even darker shade on active */
-}
-
+/* Expense List */
 #expense-list {
-  list-style-type: none;
-  padding: 0;
-  margin-top: 20px;
+    list-style-type: none; /* already set in JS but good to have in CSS */
+    padding: 0;
+    margin-top: 20px; /* if not already spaced by button */
 }
 
+/* Expense List Items */
 #expense-list li {
-  padding: 12px 15px; /* Adjusted padding */
-  background-color: #fff;
-  border-bottom: 1px solid #eee;
-  margin-bottom: 8px; /* Increased margin */
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.07); /* Improved box-shadow */
+    background-color: #e9ecef; /* light gray, distinct from container */
+    padding: 12px 15px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    color: #495057;
+    display: flex; /* for potential future additions like delete buttons */
+    justify-content: space-between;
+    align-items: center;
 }
 
-#statistics-area {
-  margin-top: 30px; /* Increased margin-top */
-  padding: 15px; /* Added padding */
-  background-color: #e9ecef; /* Light background for the stats area */
-  border-radius: 4px;
-}
-
-#statistics-area p {
-  margin: 8px 0; /* Consistent spacing for paragraphs */
-  font-size: 1.1em; /* Slightly larger font for readability */
-}
-
-#statistics-area span {
-  font-weight: bold; /* Make statistic values stand out */
-  color: #333; /* Darker color for statistic values */
+/* Canvas */
+#expense-chart {
+    width: 100% !important; /* important might be needed to override default canvas sizing */
+    max-height: 400px; /* or a suitable height */
+    margin-top: 30px;
 }
