@@ -1,110 +1,23 @@
-
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Windcao?</title>
-  <meta name="renderer" content="webkit">
+  <title>Expense Tracker</title> <!-- Changed title to be more specific -->
+  <meta name="renderer" content="webkit"> <!-- Kept existing meta tags -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', "Segoe UI", 'Roboto', "Helvetica Neue", 'Arial', 'sans-serif';
-      margin: 0;
-      padding: 20px;
-      background-color: #f8f9fa;
-      color: #212529;
-      line-height: 1.6;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 20px;
-      background-color: #ffffff;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-      color: #343a40;
-    }
-
-    #expense-description, #expense-amount {
-      display: block;
-      width: calc(100% - 22px); /* Adjusting for 10px padding on each side + 1px border on each side */
-      padding: 10px;
-      margin-bottom: 15px;
-      font-size: 1rem;
-      border: 1px solid #ced4da;
-      border-radius: 4px;
-      transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    }
-
-    #expense-description:focus, #expense-amount:focus {
-      border-color: #80bdff;
-      outline: 0;
-      box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
-    }
-
-    #add-expense {
-      display: block; /* Make button block to fill width or use specific width */
-      width: 100%;    /* Or a specific width like 'auto' or '200px' depending on design */
-      padding: 10px 20px;
-      font-size: 1.05rem;
-      font-weight: 500;
-      color: white;
-      background-color: #007bff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color .15s ease-in-out;
-      margin-bottom: 20px;
-    }
-
-    #add-expense:hover {
-      background-color: #0056b3;
-    }
-
-    #expense-list {
-      list-style-type: none;
-      padding: 0;
-      margin-top: 20px;
-    }
-
-    #expense-list li {
-      padding: 12px 15px;
-      background-color: #e9ecef;
-      border: 1px solid #dee2e6;
-      border-radius: 4px;
-      margin-bottom: 8px;
-      font-size: 0.95rem;
-      color: #495057;
-      display: flex; /* For potential future additions like delete buttons */
-      justify-content: space-between; /* For potential future additions */
-      align-items: center; /* For potential future additions */
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css"> <!-- Linked external stylesheet -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script> <!-- Added Chart.js from CDN -->
 </head>
 <body>
-  <input type="text" id="expense-description" placeholder="Expense description">
-  <input type="number" id="expense-amount" placeholder="Amount">
-  <button id="add-expense">Add Expense</button>
-  <ul id="expense-list"></ul>
-  <div id="statistics-area">
-    <p>Total Expenses: <span id="total-expenses"></span></p>
-    <p>Total Amount: $<span id="total-amount"></span></p>
-    <p>Average Amount: $<span id="average-amount"></span></p>
-    <div style="margin-top: 20px;">
-        <canvas id="expense-chart"></canvas>
-    </div>
+  <div class="container">
+    <h1>Expense Tracker</h1>
+    <input type="text" id="expense-description" placeholder="Expense description">
+    <input type="number" id="expense-amount" placeholder="Amount">
+    <button id="add-expense">Add Expense</button>
+    <ul id="expense-list"></ul>
+    <canvas id="expense-chart"></canvas> <!-- Added canvas element -->
   </div>
-  <script src="app.js"></script>
+  <script src="app.js"></script> <!-- Ensured app.js is linked at the end -->
 </body>
 </html>
