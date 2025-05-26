@@ -93,12 +93,17 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Expense Tracker</h1>
-    <input type="text" id="expense-description" placeholder="Expense description">
-    <input type="number" id="expense-amount" placeholder="Amount">
-    <button id="add-expense">Add Expense</button>
-    <ul id="expense-list"></ul>
+  <input type="text" id="expense-description" placeholder="Expense description">
+  <input type="number" id="expense-amount" placeholder="Amount">
+  <button id="add-expense">Add Expense</button>
+  <ul id="expense-list"></ul>
+  <div id="statistics-area">
+    <p>Total Expenses: <span id="total-expenses"></span></p>
+    <p>Total Amount: $<span id="total-amount"></span></p>
+    <p>Average Amount: $<span id="average-amount"></span></p>
+    <div style="margin-top: 20px;">
+        <canvas id="expense-chart"></canvas>
+    </div>
   </div>
   <script src="app.js"></script>
 </body>

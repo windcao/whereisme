@@ -1,4 +1,37 @@
 let expenses = [];
+let expenseChartInstance = null;
+
+function renderStatisticsChart(expensesData) {
+    const ctx = document.getElementById('expense-chart').getContext('2d');
+    const labels = expensesData.map(exp => exp.description);
+    const dataPoints = expensesData.map(exp => exp.amount);
+
+    if (expenseChartInstance) {
+        expenseChartInstance.destroy();
+    }
+
+    expenseChartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Expense Amount',
+                data: dataPoints,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
 
 function addExpense() {
     const descriptionInput = document.getElementById('expense-description');
@@ -27,6 +60,7 @@ function addExpense() {
 
     displayExpenses();
     saveExpenses();
+    calculateAndDisplayStatistics();
 }
 
 function displayExpenses() {
@@ -50,6 +84,21 @@ function loadExpenses() {
         expenses = JSON.parse(savedExpenses);
     }
     displayExpenses(); // Always call displayExpenses, even if no saved expenses
+    calculateAndDisplayStatistics();
+}
+
+function calculateAndDisplayStatistics() {
+    const numberOfExpenses = expenses.length;
+    let totalAmount = 0;
+    expenses.forEach(expense => {
+        totalAmount += expense.amount;
+    });
+    const averageAmount = numberOfExpenses === 0 ? 0 : totalAmount / numberOfExpenses;
+
+    document.getElementById('total-expenses').textContent = numberOfExpenses;
+    document.getElementById('total-amount').textContent = totalAmount.toFixed(2);
+    document.getElementById('average-amount').textContent = averageAmount.toFixed(2);
+    renderStatisticsChart(expenses);
 }
 
 // Event listeners
